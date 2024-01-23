@@ -54,6 +54,8 @@ tests/helperFunctions
 - Each file should be the same name as the file that it is testing
 - Each describe should focus on a singular function, and that function should be in the name (I prefer to make the describe only the function name)
 - Each test will be looking for a single result.
+- You always want to test for the expected returns, but also try to create a test for an unexpected return (ie, what happens if no argument is passed? What happens if the argument should be a string but you are given a number?)
+    - Often in writing these tests, you will be pushed to update your fucntions to include those unexpected cases, which is a good thing!
 
 Here is a good naming convention for tests:
 `returns ABC when XYZ` -> `returns a User when given correct params`
