@@ -1,30 +1,28 @@
-import { Expression } from "./types";
-import { assertNever } from "../utils";
+import { User } from "./types";
 
-export function evaluate(expr: Expression): number {
-    switch (expr.type) {
-        case "literal": {
-            return expr.value;
-        }
-        case "binary": {
-            switch (expr.operator) {
-                case "+":
-                    return evaluate(expr.left) + evaluate(expr.right);
-                case "-":
-                    return evaluate(expr.left) - evaluate(expr.right);
-                case "*":
-                    return evaluate(expr.left) * evaluate(expr.right);
-                case "/":
-                    return evaluate(expr.left) / evaluate(expr.right);
-                /* istanbul ignore next */
-                default: {
-                    return assertNever("Unexpected binary operator", expr.operator);
-                }
-            }
-        }
-        /* istanbul ignore next */
-        default: {
-            return assertNever("Unexpected expression type", expr);
-        }
-    }
+const users = [{ username: "Kat", age: 33, eyeColour: "green" }];
+
+export function findAgeByUsername(
+	username: string,
+	users: User[]
+): number | string {
+	let output = 0;
+	for (const user of users) {
+		if (user.username === username) {
+			output = user.age;
+			return output;
+		} else return "User not found";
+	}
+	return output;
+}
+
+export function findUserByEyeColour(eyeColour: string, users: User[]): string {
+	let output = "";
+	for (const user of users) {
+		if (user.eyeColour === eyeColour) {
+			output = user.username;
+			return output;
+		} else return "User not found";
+	}
+	return output;
 }
